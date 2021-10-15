@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TbQuery = new System.Windows.Forms.TextBox();
             this.TpMain = new System.Windows.Forms.TableLayoutPanel();
             this.TcQueryResponse = new System.Windows.Forms.TabControl();
             this.TpResults = new System.Windows.Forms.TabPage();
-            this.TpMessages = new System.Windows.Forms.TabPage();
             this.DgResults = new System.Windows.Forms.DataGridView();
-            this.BtnExecuteQuery = new System.Windows.Forms.Button();
+            this.TpMessages = new System.Windows.Forms.TabPage();
             this.TbMessage = new System.Windows.Forms.TextBox();
+            this.BtnExecuteQuery = new System.Windows.Forms.Button();
             this.TpMain.SuspendLayout();
             this.TcQueryResponse.SuspendLayout();
             this.TpResults.SuspendLayout();
-            this.TpMessages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgResults)).BeginInit();
+            this.TpMessages.SuspendLayout();
             this.SuspendLayout();
             // 
             // TbQuery
@@ -92,6 +92,20 @@
             this.TpResults.Text = "Results";
             this.TpResults.UseVisualStyleBackColor = true;
             // 
+            // DgResults
+            // 
+            this.DgResults.AllowUserToAddRows = false;
+            this.DgResults.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            this.DgResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.DgResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgResults.Location = new System.Drawing.Point(3, 3);
+            this.DgResults.Name = "DgResults";
+            this.DgResults.ReadOnly = true;
+            this.DgResults.Size = new System.Drawing.Size(780, 172);
+            this.DgResults.TabIndex = 0;
+            // 
             // TpMessages
             // 
             this.TpMessages.Controls.Add(this.TbMessage);
@@ -103,16 +117,15 @@
             this.TpMessages.Text = "Messages";
             this.TpMessages.UseVisualStyleBackColor = true;
             // 
-            // DgResults
+            // TbMessage
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.DgResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DgResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgResults.Location = new System.Drawing.Point(3, 3);
-            this.DgResults.Name = "DgResults";
-            this.DgResults.Size = new System.Drawing.Size(780, 172);
-            this.DgResults.TabIndex = 0;
+            this.TbMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TbMessage.Location = new System.Drawing.Point(3, 3);
+            this.TbMessage.Multiline = true;
+            this.TbMessage.Name = "TbMessage";
+            this.TbMessage.ReadOnly = true;
+            this.TbMessage.Size = new System.Drawing.Size(780, 172);
+            this.TbMessage.TabIndex = 0;
             // 
             // BtnExecuteQuery
             // 
@@ -125,16 +138,6 @@
             this.BtnExecuteQuery.UseVisualStyleBackColor = true;
             this.BtnExecuteQuery.Click += new System.EventHandler(this.BtnExecuteQuery_Click);
             // 
-            // TbMessage
-            // 
-            this.TbMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TbMessage.Location = new System.Drawing.Point(3, 3);
-            this.TbMessage.Multiline = true;
-            this.TbMessage.Name = "TbMessage";
-            this.TbMessage.ReadOnly = true;
-            this.TbMessage.Size = new System.Drawing.Size(780, 172);
-            this.TbMessage.TabIndex = 0;
-            // 
             // ArbitraryQueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,14 +145,15 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.TpMain);
             this.Name = "ArbitraryQueryForm";
-            this.Text = "ArbitraryQueryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Arbitrary Query Form";
             this.TpMain.ResumeLayout(false);
             this.TpMain.PerformLayout();
             this.TcQueryResponse.ResumeLayout(false);
             this.TpResults.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgResults)).EndInit();
             this.TpMessages.ResumeLayout(false);
             this.TpMessages.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgResults)).EndInit();
             this.ResumeLayout(false);
 
         }
