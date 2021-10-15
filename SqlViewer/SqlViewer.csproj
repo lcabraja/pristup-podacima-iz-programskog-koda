@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArbitraryQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArbitraryQueryForm.Designer.cs">
+      <DependentUpon>ArbitraryQueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dal\IRepository.cs" />
     <Compile Include="Dal\SqlRepository.cs" />
     <Compile Include="Dal\RepositoryFactory.cs" />
@@ -76,6 +82,9 @@
     <Compile Include="SelectResultsForm.Designer.cs">
       <DependentUpon>SelectResultsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ArbitraryQueryForm.resx">
+      <DependentUpon>ArbitraryQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using Zadatak.Dal;
 using Zadatak.Models;
+using Zadatak0102;
 
 namespace Zadatak
 {
@@ -45,6 +46,11 @@ namespace Zadatak
         {
             TbProcedure.Text = (LbProcedures.SelectedItem as Procedure).Definition;
             LbProcedureParameters.DataSource = (LbProcedures.SelectedItem as Procedure).Parameters;
+        }
+        private void BtnQuery_Click(object sender, EventArgs e)
+        {
+            ArbitraryQueryForm arbitraryQueryForm = new ArbitraryQueryForm();
+            arbitraryQueryForm.ShowDialog();
         }
 
         private void BtnSelect_Click(object sender, EventArgs e)
@@ -94,6 +100,5 @@ namespace Zadatak
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
-
     }
 }

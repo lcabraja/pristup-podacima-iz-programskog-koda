@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Zadatak.Models;
@@ -18,6 +19,7 @@ namespace Zadatak.Dal
         private const string SelectProcedureParameters = "SELECT PARAMETER_NAME as Name, PARAMETER_MODE as Mode, DATA_TYPE as DataType FROM {0}.INFORMATION_SCHEMA.PARAMETERS WHERE SPECIFIC_NAME='{1}'";
         private const string SelectQuery = "SELECT * FROM {0}.{1}.{2}";
 
+        #region Vjezbe0102
         public void LogIn(string server, string username, string password)
         {
             using (SqlConnection con = new SqlConnection(string.Format(ConnectionString, server, username, password)))
@@ -48,7 +50,6 @@ namespace Zadatak.Dal
                 }
             }
         }
-
         public IEnumerable<DBEntity> GetDBEntities(Database database, DBEntityType entityType)
         {
             using (SqlConnection con = new SqlConnection(cs))
@@ -129,7 +130,6 @@ namespace Zadatak.Dal
                 }
             }
         }
-
         public IEnumerable<Parameter> GetParameters(Procedure procedure)
         {
             using (SqlConnection con = new SqlConnection(cs))
@@ -154,18 +154,43 @@ namespace Zadatak.Dal
                 }
             }
         }
-
         public DataSet CreateDataSet(DBEntity dbEntity)
         {
             using (SqlConnection con = new SqlConnection(cs))
             {
                 SqlDataAdapter da = new SqlDataAdapter(string.Format(SelectQuery, dbEntity.Database, dbEntity.Schema, dbEntity.Name), con);
+                Console.WriteLine(string.Format(SelectQuery, dbEntity.Database, dbEntity.Schema, dbEntity.Name));
                 DataSet ds = new DataSet(dbEntity.Name);
                 da.Fill(ds);
                 ds.Tables[0].TableName = dbEntity.Name;
                 return ds;
             }
         }
+        #endregion
 
+        #region Projekt
+        public DataTable ExecuteArbitraryQuery(string query, SqlInfoMessageEventHandler OnInfoMessageGenerated, StatementCompletedEventHandler OnStatementCompleted)
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                con.Open();
+                con.InfoMessage += OnInfoMessageGenerated;
+                con.FireInfoMessageEventOnUserErrors = true;
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = query; 
+                    cmd.CommandType = CommandType.Text;
+                    cmd.StatementCompleted += OnStatementCompleted;
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(dr);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }
